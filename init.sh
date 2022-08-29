@@ -1,0 +1,9 @@
+#!/bin/bash
+
+git clone https://github.com/lone-cat/ssl-go.git ./ssl
+
+# create postgresql folders globally
+if ! [ -d ./certs ]
+then
+  mkdir -p ./certs
+fi

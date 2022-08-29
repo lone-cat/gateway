@@ -1,0 +1,42 @@
+version: "3.9"
+
+x-config:
+  volumes:
+    ssl:
+      - &ssl
+        type: bind
+        source: ../certs
+        target: /ssl
+    config:
+      - &config
+        type: bind
+        source: ../ssl-config
+        target: /root/ssl/config
+        read_only: true
+
+services:
+  gateway:
+    container_name: gateway
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+      target: gateway
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 768M
+    restart: unless-stopped
+    expose:
+      - 80
+      - 443
+      - 4000
+    ports:
+      - 80:80
+      - 4000:4000
+      - 443:443
+    environment:
+      TZ: Europe/Moscow
+    volumes:
+      - *config
+      - *ssl

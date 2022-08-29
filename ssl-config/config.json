@@ -1,0 +1,17 @@
+{
+  "env": "dev",
+  "email": "",
+  "domains": [],
+  "port": 8080,
+  "keyLength": 4096,
+  "certDaysLeftMin": 30,
+  "useStaging": true,
+  "accountKeyFilename": "/ssl/account.key",
+  "saveFormats": [
+    {
+      "folder": "/ssl",
+      "privateKey": "cert.key",
+      "certificateChain": "cert.pem"
+    }
+  ]
+}

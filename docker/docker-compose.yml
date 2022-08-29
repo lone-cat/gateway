@@ -1,6 +1,9 @@
 version: "3.9"
 
 x-config:
+  user:
+    UID: &uid ${UID:?UID not set}
+    GID: &gid ${GID:?GID not set}
   volumes:
     ssl:
       - &ssl
@@ -21,6 +24,9 @@ services:
       context: ../
       dockerfile: ./docker/Dockerfile
       target: gateway
+      args:
+        UID: *uid
+        GID: *gid
     deploy:
       resources:
         limits:

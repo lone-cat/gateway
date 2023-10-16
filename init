@@ -7,3 +7,5 @@ if ! [ -d ./certs ]
 then
   mkdir -p ./certs
 fi
+
+./network

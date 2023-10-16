@@ -43,6 +43,12 @@ services:
       - 443:443
     environment:
       TZ: Europe/Moscow
+      APP_CONFIG_FOLDER: config
     volumes:
       - *config
       - *ssl
+
+networks:
+  default:
+    name: gateway
+    external: true

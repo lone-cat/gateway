@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -f ./docker/docker-compose.override.yml ]
+then
+  docker compose -p gateway -f ./docker/docker-compose.yml -f ./docker/docker-compose.override.yml up -d
+else
+  docker compose -p gateway -f ./docker/docker-compose.yml up -d
+fi
+
+

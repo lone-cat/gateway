@@ -5,7 +5,7 @@ WORKDIR /app/src
 RUN go build -o /app/app
 
 
-FROM nginx:stable as gateway
+FROM nginx:bookworm as gateway
 
 # user add
 ARG UID

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# remove network:
+# docker network rm $networkname
+networkname=gateway
+
+( \
+  docker network inspect $networkname > /dev/null 2>&1 && \
+  echo "network \"$networkname\" already exists" \
+) || \
+( \
+  docker network create $networkname \
+    --driver bridge \
+    --subnet=192.168.88.0/24 \
+    --ip-range=192.168.88.128/25\
+    --gateway=192.168.88.1 \
+    > /dev/null && \
+  echo "network \"$networkname\" created" \
+)
